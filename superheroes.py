@@ -45,13 +45,16 @@ class Hero:
         self.current_health = self.attack() + self.defend(damage)
         print(f"current health is {self.current_health}")
 
+    #TODO 
     """ double check the values of this function doc says output should be between 150 and 200 """
     def attack(self):
         attack_total = 0
         for ability in self.abilities:
-            attack_strength = ability.attack()
-            attack_total += attack_strength 
-        print(f"total attack damage : {attack_total}")
+            # print("ability", ability)
+            # print("self.abilities", self.abilities)
+            attack_total += ability.attack() 
+            print(f"ability.attack(): {ability.attack()}\n")
+        print(f"total attack damage : {attack_total} \n")
         return attack_total
 
     def is_alive(self):  
@@ -59,6 +62,18 @@ class Hero:
             return True
         else:
             return False
+
+    def fight(self, opponent):
+        ''' Current Hero will take turns fighting the opponent hero passed in.
+  '''
+  # TODO: Fight each hero until a victor emerges.
+  # Print the victor's name to the screen.
+        #while a hero is still alive run attacks again
+        #if is_alive is True. run                               
+        #if is_alive is true after all attacks are done from both hero's. print DRAW
+    pass
+           
+
 
 def create_duff_man():
     """ Hero object"""
