@@ -25,7 +25,7 @@ class Hero:
         self.abilities = []
         self.armors = []   
         self.starting_health = starting_health
-        self.current_health = 0
+        self.current_health = ...
         
     def add_ability(self, ability):
         self.abilities.append(ability)
@@ -41,11 +41,11 @@ class Hero:
             block_total += block_strength
         return block_total
 
-    """ double check the values of this function doc says output should be between 150 and 200 """
     def take_damage(self, damage):
         self.current_health = self.attack() + self.defend(damage)
         print(f"current health is {self.current_health}")
 
+    """ double check the values of this function doc says output should be between 150 and 200 """
     def attack(self):
         attack_total = 0
         for ability in self.abilities:
@@ -55,8 +55,10 @@ class Hero:
         return attack_total
 
     def is_alive(self):  
-   
-        pass
+        if self.current_health > 0:
+            return True
+        else:
+            return False
 
 def create_duff_man():
     """ Hero object"""
