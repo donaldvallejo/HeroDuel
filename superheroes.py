@@ -53,19 +53,21 @@ class Hero:
             # print("ability", ability)
             # print("self.abilities", self.abilities)
             attack_total += ability.attack() 
-            print(f"ability.attack(): {ability.attack()}\n")
-        print(f"total attack damage : {attack_total} \n")
-        return attack_total
-
-    def is_alive(self):  
-        if self.current_health > 0:
+            # print(f"ability.attack(): {ability.attack()}\n")
+            # print(f"total attack damage : {attack_total} \n")
+        return attack_total 
+            
+    ''' Return True or False depending on whether the hero is alive or not. '''
+    def is_alive(self):
+        health = self.current_health 
+        if health > 0:
             return True
         else:
             return False
 
     def fight(self, opponent):
-        ''' Current Hero will take turns fighting the opponent hero passed in.
-  '''
+        ''' Current Hero will take turns fighting the opponent hero passed in. '''
+
   # TODO: Fight each hero until a victor emerges.
   # Print the victor's name to the screen.
         #while a hero is still alive run attacks again
@@ -154,6 +156,5 @@ if __name__ == "__main__":
 #     print(my_hero.starting_health)
 
 # if __name__ == "__main__":
-#     ability = Ability("Debugging Ability", 20)
 #     print(ability.name)
 #     print(ability.attack())
