@@ -48,11 +48,9 @@ class Hero:
         return attack_total 
 
     def take_damage(self, damage):
-        attack_check = self.attack() 
-        defend_check = self.defend(damage)
-        print("attack Check", attack_check)
-        print("defend Check", defend_check)
-        self.current_health = attack_check + defend_check
+        # attack_check = self.attack() 
+        # defend_check = self.defend(damage)
+        self.current_health -= damage
         print(f"current health is {self.current_health}")
             
     ''' Return True or False depending on whether the hero is alive or not. '''
@@ -101,6 +99,19 @@ def create_grace_hopper():
     smarty_pants = Ability("Smarty Pants", 90)
     hero.add_ability(debugging)
     hero.add_ability(smarty_pants)
+    punch = Ability("punch", 60)
+    kick = Ability("kicks", 70)
+    hero.add_ability(punch)
+    hero.add_ability(kick)
+
+    """ Armor instance objects"""
+    block = Armor("grace block!", 50)
+    shield = Armor("grace shield block!", 70)
+    hero.add_armor(block)
+    hero.add_armor(shield)
+    hero.defend(2)
+    print(f"grace Defended {hero.defend(2)} points of damage")
+
     return hero
 
 
@@ -114,6 +125,7 @@ def duff_man_battles_grace_hopper():
         grace_attack_power = grace.attack()
         print("Duff Man's attack:", duff_attack_power)
         print("Grace's attack:", grace_attack_power)
+
 
 if __name__ == "__main__":
     duff_man_battles_grace_hopper()
@@ -129,10 +141,10 @@ if __name__ == "__main__":
         #     print()
 
 if __name__ == "__main__":
-    hero = Hero("Grace Hopper", 200)
+    hero = create_grace_hopper()
     hero.take_damage(150)
     print(hero.is_alive())
-    hero.take_damage(15000)
+    hero.take_damage(200)
     print(hero.is_alive())
 
 # if __name__ == "__main__":
