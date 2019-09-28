@@ -48,7 +48,11 @@ class Hero:
         return attack_total 
 
     def take_damage(self, damage):
-        self.current_health = self.attack() + self.defend(damage)
+        attack_check = self.attack() 
+        defend_check = self.defend(damage)
+        print("attack Check", attack_check)
+        print("defend Check", defend_check)
+        self.current_health = attack_check + defend_check
         print(f"current health is {self.current_health}")
             
     ''' Return True or False depending on whether the hero is alive or not. '''
