@@ -20,7 +20,7 @@ class Armor:
 
 
 class Hero:
-    def __init__(self, name, starting_health=200):
+    def __init__(self, name, starting_health=100):
         self.name = name
         self.abilities = []
         self.armors = []   
@@ -48,10 +48,8 @@ class Hero:
         return attack_total 
 
     def take_damage(self, damage):
-        # attack_check = self.attack() 
-        # defend_check = self.defend(damage)
-        self.current_health -= damage
-        print(f"current health is {self.current_health}")
+        self.current_health = self.current_health - (damage - self.defend(damage))
+        print(f"current health is {self.current_health} \n")
             
     ''' Return True or False depending on whether the hero is alive or not. '''
     def is_alive(self):
@@ -89,7 +87,7 @@ def create_duff_man():
     hero.add_armor(block)
     hero.add_armor(shield)
     hero.defend(2)
-    print(f"Defended {hero.defend(2)} points of damage")
+    print(f"Defended {hero.defend(2)} points of damage \n")
 
     return hero
 
@@ -110,7 +108,7 @@ def create_grace_hopper():
     hero.add_armor(block)
     hero.add_armor(shield)
     hero.defend(2)
-    print(f"grace Defended {hero.defend(2)} points of damage")
+    print(f"grace Defended {hero.defend(2)} points of damage \n")
 
     return hero
 
@@ -123,8 +121,8 @@ def duff_man_battles_grace_hopper():
     for attack_number in range(1):
         duff_attack_power = duff_man.attack()
         grace_attack_power = grace.attack()
-        print("Duff Man's attack:", duff_attack_power)
-        print("Grace's attack:", grace_attack_power)
+        print(f"Duff Man's attack: {duff_attack_power} \n")
+        print(f"Grace's attack: {grace_attack_power} \n")
 
 
 if __name__ == "__main__":
