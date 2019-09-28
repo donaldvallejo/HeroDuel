@@ -25,7 +25,7 @@ class Hero:
         self.abilities = []
         self.armors = []   
         self.starting_health = starting_health
-        self.current_health = ...
+        self.current_health = self.starting_health
         
     def add_ability(self, ability):
         self.abilities.append(ability)
@@ -41,21 +41,15 @@ class Hero:
             block_total += block_strength
         return block_total
 
-    def take_damage(self, damage):
-        self.current_health = self.attack() + self.defend(damage)
-        print(f"current health is {self.current_health}")
-
-    #TODO 
-    """ double check the values of this function doc says output should be between 150 and 200 """
     def attack(self):
         attack_total = 0
         for ability in self.abilities:
-            # print("ability", ability)
-            # print("self.abilities", self.abilities)
             attack_total += ability.attack() 
-            # print(f"ability.attack(): {ability.attack()}\n")
-            # print(f"total attack damage : {attack_total} \n")
         return attack_total 
+
+    def take_damage(self, damage):
+        self.current_health = self.attack() + self.defend(damage)
+        print(f"current health is {self.current_health}")
             
     ''' Return True or False depending on whether the hero is alive or not. '''
     def is_alive(self):
