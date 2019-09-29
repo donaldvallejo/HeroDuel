@@ -7,10 +7,6 @@ class Ability:
         self.name = name
         self.max_damage = max_damage
 
-    def attack(self):
-        return random.randint(0, self.max_damage)
-
-
 class Armor:
     def __init__(self, name, max_block):
         self.name = name
@@ -21,12 +17,11 @@ class Armor:
 
 
 class Hero:
-    def __init__(self, name, starting_health=100):
+    def __init__(self, name, health=100):
         self.name = name
         self.abilities = []
         self.armors = []
-        self.starting_health = starting_health
-        self.current_health = self.starting_health
+        self.health = health
 
     def add_ability(self, ability):
         self.abilities.append(ability)
@@ -41,19 +36,21 @@ class Hero:
             block_total += block_strength
         return block_total
 
-    def attack(self):
-        attack_total = 0
-        for ability in self.abilities:
-            attack_total += ability.attack()
-        return attack_total
+    def attack(self, opponent):
+        attack_total = 50
+        chance = random.randint(0, ability.max_damage)
+        # for ability in self.abilities:
+        #     chance = random.randint(0, ability.max_damage)
+        opponent.health -= chance
+        return opponent.health
 
     def take_damage(self, damage):
-        self.current_health = self.current_health - (damage - self.defend(damage))
-        print(f"current health is {self.current_health} \n")
+        self.health = self.health - (damage - self.defend(damage))
+        print(f"current health is {self.health} \n")
 
     ''' Return True or False depending on whether the hero is alive or not. '''
     def is_alive(self):
-        health = self.current_health
+        health = self.health
         if health > 0:
             return True
         else:
@@ -61,12 +58,12 @@ class Hero:
 
     def fight(self, opponent):
         ''' Current Hero will take turns fighting the opponent hero passed in. '''
-        while self.current_health > 0 or opponent.current_health > 0:
+        while self.health > 0 or opponent.health > 0:
             self.attack(opponent)
             opponent.attack(self)
 
         #aFTER ONE DIES:
-        if self.current_health > 0:
+        if self.health > 0:
             print(f" {self.name} is motherfucking victorious")
         else:
             print(f"{opponent.name} B is a badass bitch!!")
@@ -91,14 +88,12 @@ def create_duff_man():
     print(f"Defended {hero.defend(2)} points of damage \n")
     return hero
 
-def create_grace_hopper():
-    hero = Hero("Grace Hopper", 200)
+def create_grace_anisha():
+    hero = Hero("Grace Anisha", 200)
     debugging = Ability("Great Debugging", 50)
     smarty_pants = Ability("Smarty Pants", 90)
     hero.add_ability(debugging)
     hero.add_ability(smarty_pants)
-    punch = Ability("punch", 60)
-    kick = Ability("kicks", 70)
     hero.add_ability(punch)
     hero.add_ability(kick)
 
@@ -115,9 +110,9 @@ def create_grace_hopper():
 def battle():
     # 1)instantiate the fighters
     duff_man = Hero("Duff Man", 200)
-    grace_hopper =Hero("Anisha", 500)
+    grace_anisha =Hero("Anisha", 500)
     # 2) make the figters fighter
-    duff_man.fight(grace_hopper)
+    duff_man.fight(grace_anisha)
     # 3) lots of blood and gore
 
 
