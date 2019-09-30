@@ -295,8 +295,73 @@ class Arena(Hero, Team):
         # However many armor the user wants the hero get the ability and add to the heros list of armor that many times
         for _ in range(0, armors_number):
             hero.add_armor(self.build_armors_list())
-        print(hero.armors)
+        print(hero.armors)heroku login
         return hero
+
+def build_team_one(self):
+
+        print("Welcome to the Proving Ground:")
+        print("   Where two teams enter, and only one team leaves")
+
+        team_name = input("Name your team Human! ")
+
+        self.team_one = Team(team_name)
+        choosing_Team_Size = True
+        while choosing_Team_Size:
+            hero_number = validator(["Yes","yes","y", "Y", "No", "no", "n", "N"],"Do you want to add a hero? (Y/N)")
+            # every time I create a hero apppend that hero to the team
+            if hero_number == "Yes" or hero_number == "yes" or hero_number == "y" or hero_number == "Y":
+                self.team_one.add_hero(self.create_hero())
+                print(self.team_one.heroes)
+            else:
+                choosing_Team_Size = False
+
+        # print("This is Team 1 list of heroes: {}.".format(team_one.heroes))
+
+    def build_team_two(self):
+
+        print("\n")
+        print("Build Team 2!")
+        team_name = input("Name your team Human! ")
+
+        self.team_two = Team(team_name)
+        choosing_Team2_Size = True
+        while choosing_Team2_Size:
+            hero_number = validator(["Yes","yes","y", "Y", "No", "no", "n", "N"],"Do you want to add a hero? (Y/N)")
+            # every time I create a hero apppend that hero to the team
+            if hero_number == "Yes" or hero_number ==  "yes" or hero_number == "y" or hero_number == "Y" :
+                self.team_two.add_hero(self.create_hero())
+                print(self.team_two.heroes)
+            else:
+                choosing_Team2_Size = False
+
+
+    def team_battle(self):
+        """
+        This method should continue to battle teams until one or both teams are dead.
+        """
+        print("\n")
+        print("{} vs. {}".format(self.team_one.name, self.team_two.name))
+        in_battle = True
+
+        while in_battle:
+             if self.team_one.attack(self.team_two) == len(self.team_two.heroes):
+                 print("Team 1 Wins!!")
+                 in_battle = False
+             else:
+                if self.team_two.attack(self.team_one) == len(self.team_one.heroes):
+                    print("Team 2 Wins!!")
+                    in_battle = False
+                else:
+                    continue
+
+    def show_stats(self):
+        """
+        This method should print out the battle statistics including each heroes kill/death ratio.
+        """
+        self.team_one.stats()
+        self.team_two.stats()
+
 
 def create_duff_man():
     """ Hero object"""
