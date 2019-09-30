@@ -1,5 +1,5 @@
-#! user/bin/python
-#capt. Alien is boss!
+# I worked on this with William and Eric
+
 import random
 
 def validator(list_of_valid_entries, input_text):
@@ -31,30 +31,6 @@ def validator_num(input_text):
                 print("Invalid Input! Try again...")
         except:
             print("Invalid Input! Try again...")
-
-
-class Ability:
-    def __init__(self, name, attack_strength):
-        self.name = name
-        self.attack_strength = attack_strength
-
-    def attack(self):
-        attack_value = random.randint((self.attack_strength // 2), self.attack_strength)
-        return attack_value
-
-    def update_attack(self, attack_strength):
-        # Update the value of the current attack strength with the # new value passed in as a parameter.
-        self.attack_strength = attack_strength
-
-
-class Armor:
-    def __init__(self, name, max_block):
-        self.name = name
-        self.max_block = max_block
-
-    def block(self):
-        return random.randint(0, self.max_block)
-
 
 class Hero:
     def __init__(self, name, health = 100):
@@ -103,6 +79,20 @@ class Hero:
 
     def add_kill(self, num_kills):
         self.kills += num_kills
+
+class Ability:
+    def __init__(self, name, attack_strength):
+        self.name = name
+        self.attack_strength = attack_strength
+
+    def attack(self):
+        attack_value = random.randint((self.attack_strength // 2), self.attack_strength)
+        return attack_value
+
+    def update_attack(self, attack_strength):
+        # Update the value of the current attack strength with the # new value passed in as a parameter.
+        self.attack_strength = attack_strength
+
 
 class Weapon(Ability):
     def attack(self):
@@ -194,6 +184,7 @@ class Team:
         for hero in self.heroes:
             health = 0
 
+
 class Armor:
     def __init__(self, name, defense):
         self.name = name
@@ -211,20 +202,11 @@ class Arena(Hero, Team):
     def build_abilities_list(self):
         # Return an ability and append ability
         abilities = [
-            "Alien Attack",
-            "Science",
-            "Star Power",
-            "Immortality",
-            "Grandmas Cookies",
-            "Blinding Strength",
-            "Cute Kittens",
-            "Team Morale",
-            "Luck",
-            "Obsequious Destruction",
-            "The Kraken",
-            "The Fire of A Million Suns",
-            "Team Spirit",
-            "Canada"]
+            "Alien Attack","Science","Star Power","Immortality","Grandmas Cookies",
+            "Blinding Strength","Cute Kittens","Team Morale","Luck",
+            "Obsequious Destruction","The Kraken","The Fire of A Million Suns",
+            "Team Spirit","Canada"
+            ]
         # Get one abilitiy out of the list
         index = random.randint(0, len(abilities) - 1)
         ability_name = abilities[index]
@@ -235,20 +217,11 @@ class Arena(Hero, Team):
 
     def build_armors_list(self):
         armors = [
-            "Calculator",
-            "Laser Shield",
-            "Invisibility",
-            "SFPD Strike Force",
-            "Social Workers",
-            "Face Paint",
-            "Damaskus Shield",
-            "Bamboo Wall",
-            "Forced Projection",
-            "Thick Fog",
-            "Wall of Will",
-            "Wall of Walls",
-            "Obamacare",
-            "Thick Goo"]
+            "Calculator","Laser Shield","Invisibility","SFPD Strike Force",
+            "Social Workers","Face Paint","Damaskus Shield","Bamboo Wall",
+            "Forced Projection","Thick Fog","Wall of Will","Wall of Walls",
+            "Obamacare", "Thick Goo"
+            ]
         # Get one armor out of the list
         index = random.randint(0, len(armors) - 1)
         armor_name = armors[index]
@@ -258,29 +231,12 @@ class Arena(Hero, Team):
 
     def create_hero(self):
         heroes = [
-            "Athena",
-            "Jodie Foster",
-            "Wonder Woman",
-            "Christina Aguilera",
-            "Gamora",
-            "Supergirl",
-            "Batgirl",
-            "Carmen Sandiego",
-            "Okoye",
-            "America Chavez",
-            "Cat Woman",
-            "White Canary",
-            "Nakia",
-            "Mera",
-            "Iris West",
-            "Quake",
-            "Wasp",
-            "Storm",
-            "Black Widow",
-            "San Luis Obispo",
-            "Ted Kennedy",
-            "San Francisco",
-            "Bananas"]
+            "Athena","Jodie Foster","Wonder Woman","Christina Aguilera",
+            "Gamora","Supergirl","Batgirl","Carmen Sandiego","Okoye",
+            "America Chavez","Cat Woman","White Canary","Nakia",
+            "Mera","Iris West","Quake","Wasp","Storm","Black Widow",
+            "San Luis Obispo","Ted Kennedy","San Francisco","Bananas"
+            ]
         index = random.randint(0, len(heroes) - 1)
         hero_name = heroes[index]
         hero = Hero(hero_name)
@@ -295,10 +251,11 @@ class Arena(Hero, Team):
         # However many armor the user wants the hero get the ability and add to the heros list of armor that many times
         for _ in range(0, armors_number):
             hero.add_armor(self.build_armors_list())
-        print(hero.armors)heroku login
+        print(hero.armors)
         return hero
 
-def build_team_one(self):
+
+    def build_team_one(self):
 
         print("Welcome to the Proving Ground:")
         print("   Where two teams enter, and only one team leaves")
@@ -363,53 +320,36 @@ def build_team_one(self):
         self.team_two.stats()
 
 
-def create_duff_man():
-    """ Hero object"""
-    hero = Hero("Duff Man")
-
-    """ Ability objects"""
-    punch = Ability("drunk punch", 60)
-    kick = Ability("kicks", 70)
-    hero.add_ability(punch)
-    hero.add_ability(kick)
-
-    """ Armor instance objects"""
-    block = Armor("block!", 50)
-    shield = Armor("shield block!", 70)
-    hero.add_armor(block)
-    hero.add_armor(shield)
-    hero.defend(2)
-    print(f"Defended {hero.defend(2)} points of damage \n")
-    return hero
-
-def create_grace_anisha():
-    hero = Hero("Grace Anisha", 200)
-    debugging = Ability("Great Debugging", 50)
-    smarty_pants = Ability("Smarty Pants", 90)
-    hero.add_ability(debugging)
-    hero.add_ability(smarty_pants)
-    hero.add_ability(punch)
-    hero.add_ability(kick)
-
-    """ Armor instance objects"""
-    block = Armor("grace block!", 50)
-    shield = Armor("grace shield block!", 70)
-    hero.add_armor(block)
-    hero.add_armor(shield)
-    hero.defend(2)
-    print(f"grace Defended {hero.defend(2)} points of damage \n")
-    return hero
-
-
-def battle():
-    # 1)instantiate the fighters
-    duff_man = Hero("Duff Man", 200)
-    grace_anisha =Hero("Anisha", 500)
-    # 2) make the figters fighter
-    duff_man.fight(grace_anisha)
-    # 3) lots of blood and gore
-
-
-
 if __name__ == "__main__":
-    battle()
+    # created a variable and assigned a boolean value
+    game_is_running = True
+
+    # Instantiate Game Arena - Object
+    arena = Arena()
+
+    # Build Teams
+    # calling a method
+    arena.build_team_one()
+    arena.build_team_two()
+
+    # while condition is true run this code
+    while game_is_running:
+        # teams battle
+        arena.team_battle()
+        # show kill/death ratio of each hero
+        arena.show_stats()
+        # After game ask user do they want to play again
+        play_again = validator(["Yes","yes","y", "Y", "No", "no", "n", "N"],"Play Again? Y or N: ")
+        if play_again ==  "No" or play_again ==  "no" or play_again ==  "n" or play_again == "N":
+            game_is_running = False
+
+        else:
+            recreate_teams = validator(["Yes","yes","y", "Y", "No", "no", "n", "N"],"Do you want new teams? (Y/N)")
+            if recreate_teams == "y" or "Y" or "Yes" or "yes":
+                arena.build_team_one()
+                arena.build_team_two()
+            else:
+                # Revive heroes to play again
+                # call function that resets all heroes to original value health
+                arena.team_one.revive_heroes()
+                arena.team_two.revive_heroes()
