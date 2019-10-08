@@ -50,6 +50,15 @@ class Hero:
         # Append armor
         self.armors.append(armor)
 
+
+    def show_abilites(self):
+        for ab in self.abilities: 
+            print(ab.name)
+
+    def show_Armor(self):
+        for ar in self.armors:
+            print(ar.name)
+
     def attack(self):
         totalAttacks = 0
         for ability in self.abilities:
@@ -245,15 +254,17 @@ class Arena(Hero, Team):
         for _ in range(0, abilites_number):
             ability = self.build_abilities_list()
             hero.add_ability(ability)
-        print(hero.abilities)
+        # print(hero.abilities)
+        hero.show_abilites() 
         # Ask How many armor
         armors_number = int(validator_num("How many picecs of armor do you want your hero {} to have? ".format(hero.name)))
         # However many armor the user wants the hero get the ability and add to the heros list of armor that many times
         for _ in range(0, armors_number):
             hero.add_armor(self.build_armors_list())
-        print(hero.armors)
+        # print(hero.armors)
+        hero.show_Armor()
         return hero
-
+    
 
     def build_team_one(self):
 
@@ -269,7 +280,8 @@ class Arena(Hero, Team):
             # every time I create a hero apppend that hero to the team
             if hero_number == "Yes" or hero_number == "yes" or hero_number == "y" or hero_number == "Y":
                 self.team_one.add_hero(self.create_hero())
-                print(self.team_one.heroes)
+                self.team_one.view_all_heroes()
+                #print(self.team_one.heroes)
             else:
                 choosing_Team_Size = False
 
@@ -288,7 +300,8 @@ class Arena(Hero, Team):
             # every time I create a hero apppend that hero to the team
             if hero_number == "Yes" or hero_number ==  "yes" or hero_number == "y" or hero_number == "Y" :
                 self.team_two.add_hero(self.create_hero())
-                print(self.team_two.heroes)
+                # print(self.team_two.heroes)
+                self.team_two.view_all_heroes()
             else:
                 choosing_Team2_Size = False
 
